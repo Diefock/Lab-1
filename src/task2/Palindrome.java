@@ -4,25 +4,22 @@ import java.util.Scanner;
 
 public class Palindrome {
     public static void main(String[] args) {
-        for (String s : args) {
-            System.out.print(s + " — ");
-            isPalindrome(s);
-        }
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            String s=sc.next();
-            if (s.equals("stop")) break;
-            isPalindrome(s);
+        Scanner in = new Scanner(System.in);
+        String input_string = in.next();
+        System.out.println(isPalindrome(input_string));
+    }
+    public static boolean isPalindrome(String s) {
+        if(s.equals(reverseString(s))) {
+            return true;
+        } else {
+            return false;
         }
     }
-    public static String reverseString(String s) {
-        StringBuilder m = new StringBuilder();
-        for (int i = s.length() - 1; i >= 0; --i) m.append(s.charAt(i));
-        return m.toString();
-    }
-    public static void isPalindrome(String s) {
-        if(s.equals(reverseString(s))) System.out.println("Полиндром");
-        else System.out.println("Не полиндром");
+    public static String reverseString(String any_str){
+        String default_str = "";
+        for(int litter_number = any_str.length();litter_number>0;litter_number--) {
+            default_str += any_str.charAt(litter_number - 1);
+        }
+        return default_str;
     }
 }
-
